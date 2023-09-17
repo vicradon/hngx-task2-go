@@ -1,7 +1,7 @@
 -- +goose Up
 -- +goose StatementBegin
 CREATE TABLE persons (
-    id int NOT NULL,
+    id integer NOT NULL,
     first_name text,
     last_name text,
     email text UNIQUE,

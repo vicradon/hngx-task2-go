@@ -27,6 +27,20 @@ func (d *Database) Exec(query string, args ...interface{}) error {
 	return err
 }
 
+func (d *Database) ExecAndGetLastInsertID(query string, args ...interface{}) (int64, error) {
+	result, err := d.db.Exec(query, args...)
+	if err != nil {
+		return 0, err
+	}
+
+	lastInsertID, err := result.LastInsertId()
+	if err != nil {
+		return 0, err
+	}
+
+	return lastInsertID, nil
+}
+
 type RowJSON map[string]interface{}
 
 func (d *Database) Query(query string, args ...interface{}) ([]RowJSON, error) {

@@ -21,3 +21,17 @@ goose create make_email_unique_and_auto_increment_id sql
 ```bash
 goose sqlite3 ../database.db up
 ```
+
+## Deployment
+
+To deploy the app, you can easily use the provided Docker image. Build the image using the command below:
+
+```bash
+docker build -t <DOCKERHUB_USERNAME>/personcrudapi .
+```
+
+Then run the Docker image using the command below:
+
+```bash
+docker run -p 5000:8080 <DOCKERHUB_USERNAME>/personcrudapi
+```
